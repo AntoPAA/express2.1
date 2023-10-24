@@ -11,9 +11,18 @@ describe("GET /api/movies", () => {
 
 describe("GET /api/movies/:id", () => {
     it("should return all movies id", async () => {
-        const response = await request(app).get('/api/movies');
+        const response = await request(app).get('/api/movies/1');
 
         expect(response.headers["content-type"]).toMatch(/json/);
         expect(response.status).toEqual(200);
+    });
+});
+
+describe("GET /api/movies/:id", () => {
+    it("should return all movies id", async () => {
+
+        const response = await request(app).get('/api/movies/0');
+
+        expect(response.status).toEqual(404);
     });
 });
